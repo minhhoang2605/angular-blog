@@ -1,0 +1,54 @@
+import { Comment } from './../comment.model';
+import { PostsService } from './../posts.service';
+import { Component, OnInit } from '@angular/core';
+import { Post } from '../post.model';
+import { ActivatedRoute } from '@angular/router';
+
+@Component({
+  selector: 'app-post-detail',
+  templateUrl: './post-detail.component.html',
+  styleUrls: ['./post-detail.component.css']
+})
+export class PostDetailComponent implements OnInit {
+  comments: Comment[];
+  post: Post;
+
+  constructor(
+    private route: ActivatedRoute,
+    private postsService: PostsService,
+  ) { }
+
+  ngOnInit() {
+    this.getPost();
+    this.getComments();
+  }
+
+  getPost(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.post = this.postsService.getPost(id);
+  }
+
+  getComments(): void {
+    const id = this.post.postID;
+    this.comments = this.postsService.getComments(id);
+  }
+
+  likePost(): void {
+    this.post.likes++;
+  }
+
+  showInputField(): void {
+    document.getElementById('comment-input').style.display = 'block';
+  }
+
+  addComment(commentText: string): void {
+    let comment: Comment = {
+      postID: this.post.postID,
+      commentID: this.comments.length,
+      content: commentText
+    };
+    this.postsService.addComment(comment);
+    document.getElementById('comment-input').style.display = 'none';
+    this.getComments();
+  }
+}

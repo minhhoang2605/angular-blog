@@ -1,0 +1,18 @@
+<header class='new-post-header'>
+    <h1>Create new Post</h1>
+</header>
+<main class='new-post'>
+    <form #newPostForm = "ngForm" (ngSubmit)="onSubmit()">
+        <input class='form-item' type="text" name = "title" required
+            [(ngModel)]="post.title"
+            placeholder="Type your post title here">
+        <br>
+        <input class='form-item' type="text" name = "content" required
+            [(ngModel)]="post.content"
+            placeholder="Type your post here">
+        <br>
+        <button type='submit' class="submit">
+            Post
+        </button>
+    </form>
+</main>
