@@ -29,8 +29,7 @@ export class PostDetailComponent implements OnInit {
   }
 
   getComments(): void {
-    const id = this.post.postID;
-    this.comments = this.postsService.getComments(id);
+    this.comments = this.postsService.getComments(this.post.postID);
   }
 
   likePost(): void {
@@ -38,7 +37,9 @@ export class PostDetailComponent implements OnInit {
   }
 
   showInputField(): void {
-    document.getElementById('comment-input').style.display = 'block';
+    let element = document.getElementById('comment-input');
+    element.style.display = 'block';
+    (element as HTMLInputElement).value = '';
   }
 
   addComment(commentText: string): void {
@@ -48,7 +49,9 @@ export class PostDetailComponent implements OnInit {
       content: commentText
     };
     this.postsService.addComment(comment);
-    document.getElementById('comment-input').style.display = 'none';
+    let element = document.getElementById('comment-input');
+    element.style.display = 'none';
+    (element as HTMLInputElement).value = '';
     this.getComments();
   }
 }

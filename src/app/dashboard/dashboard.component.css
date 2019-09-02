@@ -26,16 +26,17 @@
 }
 
 .sidenav-item {
+  font-family: 'Hepta Slab', serif;
   padding: 20px 20px 20px 40px;
   color: #ddd;
-  border-top: 1px solid #bbb;
 }
 
-.sidenav-item:last-child {
+.sidenav-item:last-child:hover {
   border-bottom: 1px solid #bbb;
 }
 
 .sidenav-item:hover {
   background-color: rgba(255, 255, 255, 0.2);
+  border-top: 1px solid #bbb;
   cursor: pointer;
 }

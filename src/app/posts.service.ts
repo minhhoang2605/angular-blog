@@ -34,6 +34,7 @@ export class PostsService {
   }
 
   addComment(comment: Comment): void {
+    this.posts.find(post => post.postID === comment.postID).posts++;
     this.comments.push(comment);
   }
 

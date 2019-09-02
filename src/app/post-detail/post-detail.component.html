@@ -1,6 +1,6 @@
-<div class="posts-container">
+<div class="post-container">
     <header class="post-title">
-        <h2>{{post.title}}</h2>
+        <h1>{{post.title}}</h1>
     </header>
     <main class="post-content">
         {{post.content}}
@@ -10,19 +10,20 @@
         
         {{comments.length}} comments
     </aside>
-    <footer class="posts-interaction">
+    <footer class="post-buttons">
         <button (click)='likePost()'>Like</button>
         <button (click)='showInputField()'>Comment</button>
-        <input class='comment-input' #box
+        <textarea class='comment-input' #box
             id='comment-input' 
             style='display: none' 
             placeholder="Please type your comment here"
-            (keyup.enter)='addComment(box.value)' 
-        />
+            (keyup.enter)='addComment(box.value)'>
+        </textarea>
     </footer>
 </div>
 
 <div class="comments-container">
+    <h2>Comments</h2>
     <ul class="comments">
         <li class="comments-item" *ngFor='let comment of comments'>
                 {{comment.content}}

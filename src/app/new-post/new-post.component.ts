@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./new-post.component.css']
 })
 export class NewPostComponent implements OnInit {
-  post = new Post(0, '', '', 0);
+  post = new Post('', '');
 
   constructor(
     private postsService: PostsService,
@@ -25,7 +25,7 @@ export class NewPostComponent implements OnInit {
       alert('Invalid Input');
     } else {
       this.postsService.addPost(this.post);
-      this.post = new Post(0, '', '', 0);
+      this.post = new Post('', '');
       this.router.navigate(['/dashboard/posts']);
     }
   }
