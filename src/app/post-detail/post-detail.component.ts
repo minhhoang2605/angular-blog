@@ -37,19 +37,19 @@ export class PostDetailComponent implements OnInit {
   }
 
   showInputField(): void {
-    let element = document.getElementById('comment-input');
+    const element = document.getElementById('comment-input');
     element.style.display = 'block';
     (element as HTMLInputElement).value = '';
   }
 
   addComment(commentText: string): void {
-    let comment: Comment = {
+    const comment: Comment = {
       postID: this.post.postID,
       commentID: this.comments.length,
       content: commentText
     };
     this.postsService.addComment(comment);
-    let element = document.getElementById('comment-input');
+    const element = document.getElementById('comment-input');
     element.style.display = 'none';
     (element as HTMLInputElement).value = '';
     this.getComments();
