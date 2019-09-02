@@ -33,7 +33,7 @@ ul.comments {
     white-space: pre;
 }
 
-.post-buttons {
+.post-buttons { 
     width: 100%;
     margin: auto;
     left: 50%;
@@ -45,7 +45,7 @@ h2 {
 
 button {
     width: 50%;
-    border-radius: 10px;
+    border-radius: 5px;
     background: rgb(190, 186, 186, 0.1);
 }
 

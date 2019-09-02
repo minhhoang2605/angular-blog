@@ -7,7 +7,6 @@
 .title {
     height: 60px;
     font-size: 40px;
-    
 }
 
 .content {
@@ -22,7 +21,7 @@ button {
     width: 100px;
     font-size: 20px;
     margin: 5px 20px;
-    border-radius: 10px;
+    border-radius: 5px;
     background: #dfdcdc;
 }
 
