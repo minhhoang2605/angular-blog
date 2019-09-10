@@ -54,7 +54,7 @@ export class PostsService {
 
   async addPost(post: Post) {
     try {
-      this.graphqlService.query(createPost, {
+      return this.graphqlService.query(createPost, {
         input: {
           title: post.title,
           content: post.content,
