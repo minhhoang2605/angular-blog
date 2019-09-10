@@ -1,15 +1,15 @@
 export class Post {
-    postID: number;
+    id: string;
     title: string;
     content: string;
     likes: number;
-    posts: number;
+    comments: number;
 
     constructor(title: string, content: string) {
         this.title = title;
         this.content = content;
-        this.postID = 0;
+        this.id = '0';
         this.likes = 0;
-        this.posts = 0;
+        this.comments = 0;
     }
 }

@@ -1,4 +1,3 @@
-import { Comment } from './../comment.model';
 import { Component, OnInit } from '@angular/core';
 import { Post } from '../post.model';
 import { PostsService } from '../posts.service';
@@ -10,7 +9,6 @@ import { PostsService } from '../posts.service';
 })
 export class PostListComponent implements OnInit {
   posts: Post[];
-  comments: Comment[];
 
   constructor(private postsService: PostsService) { }
 
@@ -19,6 +17,8 @@ export class PostListComponent implements OnInit {
   }
 
   getPosts(): void {
-    this.posts = this.postsService.getPosts();
+    this.postsService.getPosts().then(res =>  {
+      this.posts = res.data.listPosts.items;
+    });
   }
 }

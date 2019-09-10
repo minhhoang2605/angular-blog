@@ -1,5 +1,5 @@
 export class Comment {
-    commentID: number;
-    postID: number;
+    id: string;
+    postID: string;
     content: string;
 }

@@ -1,10 +1,10 @@
 <div class="posts-container">
     <h1>Popular Posts</h1>
     <ul class="posts" *ngFor='let post of posts'>
-        <li routerLink="/dashboard/post/{{post.postID}}">
+        <li routerLink="/dashboard/post/{{post.id}}">
             <span class="post-item like">{{post.likes}} likes</span>
             <span class="post-item title">{{post.title}}</span>
-            <span class="post-item comment">{{post.posts}} <i class="fa fa-comment"></i></span>
+            <span class="post-item comment">{{post.comments}} <i class="fa fa-comment"></i></span>
         </li>
     </ul>
 </div>

@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { NewPostComponent } from './new-post/new-post.component';
+import { AmplifyAngularModule, AmplifyService } from 'aws-amplify-angular';
 
 @NgModule({
   declarations: [
@@ -21,8 +22,11 @@ import { NewPostComponent } from './new-post/new-post.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    AmplifyAngularModule,
   ],
-  providers: [],
+  providers: [
+    AmplifyService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

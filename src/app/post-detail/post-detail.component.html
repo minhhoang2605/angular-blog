@@ -1,4 +1,4 @@
-<div class="post-container">
+<div class="post-container" *ngIf="post">
     <header class="post-title">
         <h1>{{post.title}}</h1>
     </header>
@@ -7,7 +7,7 @@
     </main>
     <aside class="likes count">
         {{post.likes}} likes
-        {{comments.length}} comments
+        {{post.comments}} comments
     </aside>
     <footer class="post-buttons">
         <button (click)='likePost()'>Like</button>
@@ -23,7 +23,7 @@
 
 <div class="comments-container">
     <h2>Comments</h2>
-    <ul class="comments">
+    <ul class="comments" *ngIf='comments'>
         <li class="comments-item" *ngFor='let comment of comments'>
                 {{comment.content}}
         </li>

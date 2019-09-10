@@ -1,0 +1,13 @@
+type Comment @model {
+  id: ID!
+  postID: ID!
+  content: String!
+}
+
+type Post @model {
+  id: ID!
+  title: String!
+  content: String!
+  likes: Int
+  comments: Int
+}

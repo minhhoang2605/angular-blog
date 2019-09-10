@@ -1,41 +1,97 @@
+import { GraphqlService } from './graphql.service';
 import { Injectable } from '@angular/core';
-import { POSTS } from './mockpostdata';
-import { COMMENTS } from './mockcomments';
 import { Post } from './post.model';
 import { Comment } from './comment.model';
+import { listPosts, getPost, listComments } from 'src/graphql/queries';
+import { createComment, updatePost, createPost } from 'src/graphql/mutations';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostsService {
-  posts: Post[];
-  comments: Comment[];
 
-  constructor() {
-    this.posts = POSTS;
-    this.comments = COMMENTS;
+  constructor(
+    private graphqlService: GraphqlService,
+  ) { }
+
+  async getPosts(): Promise<any> {
+    let response: any;
+    try {
+      response = await this.graphqlService.query(listPosts);
+      return response;
+    } catch (error) {
+      return Promise.reject(Error('Failed to retrive posts data'));
+    }
   }
 
-  getPosts(): Post[] {
-    return this.posts;
+  async getPost(postID: string): Promise<any> {
+    let response: any;
+    try {
+      response = await this.graphqlService.query(getPost, { id: postID });
+      return response;
+    } catch (error) {
+      return Promise.reject(Error('Failed to retrive posts data'));
+    }
   }
 
-  getPost(postID: number): Post {
-    return this.posts.find(post => post.postID === postID);
+  async getComments(postId: string): Promise<any> {
+    let response: any;
+    const queryArgs = {
+      filter: {
+        postID: {
+          eq: postId
+        }
+      }
+    };
+
+    try {
+      response = await this.graphqlService.query(listComments, queryArgs);
+      return response;
+    } catch (error) {
+      return Promise.reject(Error('Failed to retrive post comments data'));
+    }
   }
 
-  getComments(postID: number): Comment[] {
-    return this.comments.filter(comment => comment.postID === postID);
+  async addPost(post: Post) {
+    try {
+      this.graphqlService.query(createPost, {
+        input: {
+          title: post.title,
+          content: post.content,
+          comments: 0,
+          likes: 0
+        }
+      });
+    } catch (error) {
+      return Promise.reject(Error('Failed to post'));
+    }
   }
 
-  addPost(post: Post): void {
-    post.postID = this.posts.length;
-    this.posts.push(post);
+  likePost(postId: string, like: number): void {
+    this.graphqlService.query(updatePost, {
+      input: {
+        id: postId,
+        likes: like
+      }
+    });
   }
 
-  addComment(comment: Comment): void {
-    this.posts.find(post => post.postID === comment.postID).posts++;
-    this.comments.push(comment);
+  async addComment(comment: Comment, count: number) {
+    try {
+      this.graphqlService.query(createComment, {
+        input: {
+          postID: comment.postID,
+          content: comment.content
+        }
+      });
+      this.graphqlService.query(updatePost, {
+        input: {
+          id: comment.postID,
+          comments: count
+        }
+      });
+    } catch (error) {
+      return Promise.reject(Error('Failed to add comment data'));
+    }
   }
-
 }

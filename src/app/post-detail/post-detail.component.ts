@@ -24,16 +24,19 @@ export class PostDetailComponent implements OnInit {
   }
 
   getPost(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.post = this.postsService.getPost(id);
+    const id = this.route.snapshot.paramMap.get('id');
+    this.postsService.getPost(id)
+      .then(response => this.post = response.data.getPost);
   }
 
   getComments(): void {
-    this.comments = this.postsService.getComments(this.post.postID);
+    const id = this.route.snapshot.paramMap.get('id');
+    this.postsService.getComments(id)
+      .then(response => this.comments = response.data.listComments.items);
   }
 
   likePost(): void {
-    this.post.likes++;
+    this.postsService.likePost(this.post.id, ++this.post.likes);
   }
 
   showInputField(): void {
@@ -42,13 +45,13 @@ export class PostDetailComponent implements OnInit {
     (element as HTMLInputElement).value = '';
   }
 
-  addComment(commentText: string): void {
+  async addComment(commentText: string) {
     const comment: Comment = {
-      postID: this.post.postID,
-      commentID: this.comments.length,
+      postID: this.post.id,
+      id: '0',
       content: commentText
     };
-    this.postsService.addComment(comment);
+    await this.postsService.addComment(comment, ++this.post.comments);
     const element = document.getElementById('comment-input');
     element.style.display = 'none';
     (element as HTMLInputElement).value = '';

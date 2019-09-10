@@ -19,12 +19,12 @@ export class NewPostComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(): void {
+  async onSubmit() {
     console.log(this.post.title);
     if (this.post.title == null || this.post.content == null) {
       alert('Invalid Input');
     } else {
-      this.postsService.addPost(this.post);
+      await this.postsService.addPost(this.post);
       this.post = new Post('', '');
       this.router.navigate(['/dashboard/posts']);
     }
