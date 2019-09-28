@@ -8,11 +8,5 @@
 			}
 		}
 	},
-	"auth": {
-		"angularblog597328f6": {
-			"service": "Cognito",
-			"providerPlugin": "awscloudformation",
-			"dependsOn": []
-		}
-	}
+	"auth": {}
 }

@@ -9,11 +9,6 @@
             "UnauthRoleName": "angular-blog-blogenv-20190907145323-unauthRole",
             "StackName": "angular-blog-blogenv-20190907145323",
             "StackId": "arn:aws:cloudformation:ap-southeast-2:327701702320:stack/angular-blog-blogenv-20190907145323/6c151270-d12b-11e9-b3cd-0a7bf1960652"
-        },
-        "categories": {
-            "auth": {
-                "angularblog597328f6": {}
-            }
         }
     }
 }
