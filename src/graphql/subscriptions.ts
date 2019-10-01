@@ -1,6 +1,30 @@
 // tslint:disable
 // this is an auto generated file. This will be overwritten
 
+export const onCreatePost = `subscription OnCreatePost {
+  onCreatePost {
+    id
+    title
+    content
+  }
+}
+`;
+export const onUpdatePost = `subscription OnUpdatePost {
+  onUpdatePost {
+    id
+    title
+    content
+  }
+}
+`;
+export const onDeletePost = `subscription OnDeletePost {
+  onDeletePost {
+    id
+    title
+    content
+  }
+}
+`;
 export const onCreateComment = `subscription OnCreateComment {
   onCreateComment {
     id
@@ -22,36 +46,6 @@ export const onDeleteComment = `subscription OnDeleteComment {
     id
     postID
     content
-  }
-}
-`;
-export const onCreatePost = `subscription OnCreatePost {
-  onCreatePost {
-    id
-    title
-    content
-    likes
-    comments
-  }
-}
-`;
-export const onUpdatePost = `subscription OnUpdatePost {
-  onUpdatePost {
-    id
-    title
-    content
-    likes
-    comments
-  }
-}
-`;
-export const onDeletePost = `subscription OnDeletePost {
-  onDeletePost {
-    id
-    title
-    content
-    likes
-    comments
   }
 }
 `;

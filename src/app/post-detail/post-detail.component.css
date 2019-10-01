@@ -1,5 +1,4 @@
 h1 {
-    font-family: 'Satisfy', cursive;
     margin: 10px 20px;
 }
 
@@ -29,34 +28,19 @@ ul.comments {
 
 .post-content {
     font-size: 30px;
-    font-family: 'Satisfy', cursive;
     white-space: pre;
-}
-
-.post-buttons { 
-    width: 100%;
-    margin: auto;
-    left: 50%;
 }
 
 h2 {
     padding: 0px 20px;
 }
 
-button {
-    width: 50%;
-    border-radius: 5px;
-    background: rgb(190, 186, 186, 0.1);
-}
-
-button:hover {
-    background: rgba(122, 118, 118, 0.3);
-}
-
 .comment-input {
+    display: block;
     font-size: 30px;
     margin-top: 5px;
-    width: 100%;
+    width: 90%;
     height: 60px;
     padding: 0;
+    margin: auto;
 }

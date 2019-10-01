@@ -12,4 +12,15 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
 
+  toggleNav() {
+    if (document.getElementById('sidenav').style.width !== '0px') {
+      document.getElementById('sidenav').style.width = '0px';
+      document.getElementById('main').style.marginLeft = '0px';
+      document.getElementById('myButton').innerHTML = '☰';
+    } else {
+      document.getElementById('sidenav').style.width = '240px';
+      document.getElementById('main').style.marginLeft = '240px';
+      document.getElementById('myButton').innerHTML = 'X';
+    }
+  }
 }

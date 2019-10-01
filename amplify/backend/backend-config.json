@@ -4,9 +4,17 @@
 			"service": "AppSync",
 			"providerPlugin": "awscloudformation",
 			"output": {
-				"securityType": "API_KEY"
+				"authConfig": {
+					"additionalAuthenticationProviders": [],
+					"defaultAuthentication": {
+						"authenticationType": "API_KEY",
+						"apiKeyConfig": {
+							"description": "blogapikey",
+							"apiKeyExpirationDays": "365"
+						}
+					}
+				}
 			}
 		}
-	},
-	"auth": {}
+	}
 }

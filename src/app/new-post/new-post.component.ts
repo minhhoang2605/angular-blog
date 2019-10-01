@@ -1,6 +1,6 @@
-import { PostsService } from './../posts.service';
 import { Component, OnInit } from '@angular/core';
-import { Post } from '../post.model';
+import { Post } from '../post/state/post.model';
+import { PostService } from '../post/state/post.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,19 +12,19 @@ export class NewPostComponent implements OnInit {
   post = new Post('', '');
 
   constructor(
-    private postsService: PostsService,
+    private postService: PostService,
     private router: Router,
     ) { }
 
   ngOnInit() {
   }
 
-  async onSubmit() {
+  onSubmit() {
     console.log(this.post.title);
     if (this.post.title == null || this.post.content == null) {
       alert('Invalid Input');
     } else {
-      await this.postsService.addPost(this.post);
+      this.postService.add(this.post);
       this.post = new Post('', '');
       this.router.navigate(['/dashboard/posts']);
     }

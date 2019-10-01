@@ -12,8 +12,7 @@ export class GraphqlService {
     try {
       return await API.graphql(graphqlOperation(query, params));
     } catch (error) {
-      const message = error.message;
-      return Promise.reject(Error('Failed to send query: ${message}'));
+      return Promise.reject(Error('Failed to send query'));
     }
   }
 }

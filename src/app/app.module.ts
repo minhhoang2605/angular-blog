@@ -9,6 +9,8 @@ import { PostListComponent } from './post-list/post-list.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { NewPostComponent } from './new-post/new-post.component';
 import { AmplifyAngularModule, AmplifyService } from 'aws-amplify-angular';
+import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { AmplifyAngularModule, AmplifyService } from 'aws-amplify-angular';
     AppRoutingModule,
     FormsModule,
     AmplifyAngularModule,
+    environment.production ? [] : AkitaNgDevtools.forRoot(),
   ],
   providers: [
     AmplifyService,

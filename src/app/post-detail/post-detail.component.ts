@@ -1,8 +1,10 @@
-import { Comment } from './../comment.model';
-import { PostsService } from './../posts.service';
+import { Comment } from 'src/app/comment/state/comment.model';
+import { CommentService } from 'src/app/comment/state/comment.service';
+import { PostService } from '../post/state/post.service';
 import { Component, OnInit } from '@angular/core';
-import { Post } from '../post.model';
+import { Post } from '../post/state/post.model';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-post-detail',
@@ -15,7 +17,8 @@ export class PostDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private postsService: PostsService,
+    private postService: PostService,
+    private commentService: CommentService
   ) { }
 
   ngOnInit() {
@@ -25,25 +28,21 @@ export class PostDetailComponent implements OnInit {
 
   getPost(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.postsService.getPost(id)
-      .then(response => this.post = response.data.getPost);
+    this.postService.getPost(id).subscribe(response =>
+      this.post = response);
   }
 
   getComments(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.postsService.getComments(id)
-      .then(response => this.comments = response.data.listComments.items);
+    this.commentService.getComments(id).subscribe(response =>
+      this.comments = response);
   }
 
-  likePost(): void {
-    this.postsService.likePost(this.post.id, ++this.post.likes);
-  }
-
-  showInputField(): void {
-    const element = document.getElementById('comment-input');
-    element.style.display = 'block';
-    (element as HTMLInputElement).value = '';
-  }
+  // showInputField(): void {
+  //   const element = document.getElementById('comment-input');
+  //   element.style.display = 'block';
+  //   (element as HTMLInputElement).value = '';
+  // }
 
   async addComment(commentText: string) {
     const comment: Comment = {
@@ -51,9 +50,8 @@ export class PostDetailComponent implements OnInit {
       id: '0',
       content: commentText
     };
-    await this.postsService.addComment(comment, ++this.post.comments);
+    await this.commentService.add(comment);
     const element = document.getElementById('comment-input');
-    element.style.display = 'none';
     (element as HTMLInputElement).value = '';
     this.getComments();
   }

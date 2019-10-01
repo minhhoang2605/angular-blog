@@ -1,3 +1,4 @@
+<div class="post-detail-container">
 <div class="post-container" *ngIf="post">
     <header class="post-title">
         <h1>{{post.title}}</h1>
@@ -5,27 +6,19 @@
     <main class="post-content">
         {{post.content}}
     </main>
-    <aside class="likes count">
-        {{post.likes}} likes
-        {{post.comments}} comments
-    </aside>
-    <footer class="post-buttons">
-        <button (click)='likePost()'>Like</button>
-        <button (click)='showInputField()'>Comment</button>
-        <textarea class='comment-input' #box
-            id='comment-input' 
-            style='display: none' 
-            placeholder="Please type your comment here"
-            (keyup.enter)='addComment(box.value)'>
-        </textarea>
-    </footer>
 </div>
 
 <div class="comments-container">
     <h2>Comments</h2>
+    <textarea class='comment-input' #box
+            id='comment-input' 
+            placeholder="Leave a Reply"
+            (keyup.enter)='addComment(box.value)'
+    ></textarea>
     <ul class="comments" *ngIf='comments'>
         <li class="comments-item" *ngFor='let comment of comments'>
                 {{comment.content}}
         </li>
     </ul>
+</div>
 </div>

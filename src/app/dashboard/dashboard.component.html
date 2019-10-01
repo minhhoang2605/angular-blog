@@ -1,15 +1,14 @@
-<div class="grid-container"> <!-- increase the container -->
-    <aside class="sidenav">
-        <ul class="sidenav-list">
-            <li class="sidenav-item" routerLink="/dashboard/posts">
-                Home
-            </li>
-            <li class="sidenav-item" routerLink="/dashboard/new-post">
-                Create Post
-            </li>
-        </ul>
-    </aside>
-    <main class="main">
-        <router-outlet></router-outlet>
-    </main>
-</div>
+<aside class="sidenav" id="sidenav">
+    <ul class="sidenav-list">
+        <li class="sidenav-item" routerLink="/dashboard/posts">
+            Home
+        </li>
+        <li class="sidenav-item" routerLink="/dashboard/new-post">
+            Create Post
+        </li>
+    </ul>
+</aside>
+<main class="main" id="main">
+    <button class="openbtn" (click)="toggleNav()">☰</button>
+    <router-outlet></router-outlet>
+</main>

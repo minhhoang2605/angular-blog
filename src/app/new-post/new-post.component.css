@@ -1,35 +1,39 @@
 .form-item {
-    margin: 5px 20px;
-    width: 95%;
-    border-radius: 10px;
+  margin: 5px 20px;
+  width: 95%;
+  border-radius: 10px;
 }
 
 .title {
-    height: 60px;
-    font-size: 40px;
+  height: 60px;
+  font-size: 40px;
 }
 
 .content {
-    height: 300px;
-    font-size: 30px;
+  height: 300px;
+  font-size: 30px;
 }
 
 button {
-    float: right;
-    font-family: 'Dancing Script', cursive;
-    padding: 10px;
-    width: 100px;
-    font-size: 20px;
-    margin: 5px 20px;
-    border-radius: 5px;
-    background: #dfdcdc;
+  float: right;
+  padding: 0 25px;
+  font-size: 13px;
+  margin: 5px 20px;
+  border-radius: 100px;
+  background-color: #007aff;
+  color: #fff;
+  line-height: 50px;
+  border: none;
+  font-weight: bold;
+  word-spacing: normal;
+  box-sizing: border-box;
+  cursor: pointer;
 }
 
 button:hover {
-    box-shadow: 0 6px 8px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
 h1 {
-    font-family: 'Satisfy', cursive;
-    margin: 10px 20px;
+  margin: 10px 20px;
 }
