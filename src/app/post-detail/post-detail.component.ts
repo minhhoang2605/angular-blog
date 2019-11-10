@@ -1,3 +1,4 @@
+import { CommentQuery } from './../comment/state/comment.query';
 import { Comment } from 'src/app/comment/state/comment.model';
 import { CommentService } from 'src/app/comment/state/comment.service';
 import { PostService } from '../post/state/post.service';
@@ -5,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
 import { Post } from '../post/state/post.model';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { PostQuery } from '../post/state/post.query';
+import { AddComment } from '../comment/commands/add-comment';
+import { CommandInvoker } from '../command-invoker';
 
 @Component({
   selector: 'app-post-detail',
@@ -18,7 +22,9 @@ export class PostDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private postService: PostService,
-    private commentService: CommentService
+    private commentService: CommentService,
+    private commentQuery: CommentQuery,
+    private postQuery: PostQuery
   ) { }
 
   ngOnInit() {
@@ -28,21 +34,15 @@ export class PostDetailComponent implements OnInit {
 
   getPost(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.postService.getPost(id).subscribe(response =>
+    this.postQuery.getPost(id).subscribe(response =>
       this.post = response);
   }
 
   getComments(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.commentService.getComments(id).subscribe(response =>
+    this.commentQuery.getComments(id).subscribe(response =>
       this.comments = response);
   }
-
-  // showInputField(): void {
-  //   const element = document.getElementById('comment-input');
-  //   element.style.display = 'block';
-  //   (element as HTMLInputElement).value = '';
-  // }
 
   async addComment(commentText: string) {
     const comment: Comment = {
@@ -50,7 +50,12 @@ export class PostDetailComponent implements OnInit {
       id: '0',
       content: commentText
     };
-    await this.commentService.add(comment);
+    // await this.commentService.add(comment);
+
+    const invoker = new CommandInvoker();
+    invoker.setCommand(new AddComment(this.commentService, comment));
+    invoker.doThing();
+
     const element = document.getElementById('comment-input');
     (element as HTMLInputElement).value = '';
     this.getComments();

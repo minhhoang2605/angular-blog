@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Post } from '../post/state/post.model';
 import { PostService } from '../post/state/post.service';
 import { Router } from '@angular/router';
+import { CommandInvoker } from '../command-invoker';
+import { AddPost } from '../post/commands/add-post';
 
 @Component({
   selector: 'app-new-post',
@@ -24,7 +26,12 @@ export class NewPostComponent implements OnInit {
     if (this.post.title == null || this.post.content == null) {
       alert('Invalid Input');
     } else {
-      this.postService.add(this.post);
+      //this.postService.add(this.post);
+      
+      const invoker = new CommandInvoker();
+      invoker.setCommand(new AddPost(this.postService, this.post));
+      invoker.doThing();
+
       this.post = new Post('', '');
       this.router.navigate(['/dashboard/posts']);
     }
