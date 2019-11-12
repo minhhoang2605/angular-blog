@@ -24,7 +24,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
+              "src/styles.scss",
               "./node_modules/font-awesome/css/font-awesome.css"
             ],
             "scripts": []
@@ -90,7 +90,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }
@@ -126,5 +126,10 @@
   "defaultProject": "angular-blog",
   "cli": {
     "defaultCollection": "@datorama/akita"
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
   }
 }
