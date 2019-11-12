@@ -1,24 +1,24 @@
 <div class="post-detail-container">
-<div class="post-container" *ngIf="post">
-    <header class="post-title">
-        <h1>{{post.title}}</h1>
-    </header>
-    <main class="post-content">
-        {{post.content}}
-    </main>
-</div>
+    <div class="post-container" *ngIf="post">
+        <header class="post-title">
+            <h1>{{post.title}}</h1>
+        </header>
+        <main class="post-content">
+            {{post.content}}
+        </main>
+    </div>
 
-<div class="comments-container">
-    <h2>Comments</h2>
-    <textarea class='comment-input' #box
-            id='comment-input' 
-            placeholder="Leave a Reply"
-            (keyup.enter)='addComment(box.value)'
-    ></textarea>
-    <ul class="comments" *ngIf='comments'>
-        <li class="comments-item" *ngFor='let comment of comments'>
-                {{comment.content}}
-        </li>
-    </ul>
-</div>
+    <div class="comments-container">
+        <h2>Comments</h2>
+        <textarea class='comment-input' #box
+                id='comment-input' 
+                placeholder="Leave a Reply"
+                (keyup.enter)='addComment(box.value)'
+        ></textarea>
+        <ul class="comments" *ngIf='comments'>
+            <li class="comments-item" *ngFor='let comment of comments'>
+                    {{comment.content}}
+            </li>
+        </ul>
+    </div>
 </div>

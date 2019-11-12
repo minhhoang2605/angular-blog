@@ -1,0 +1,33 @@
+@import '../mixins.scss';
+.title {
+  height: 60px;
+  font-size: 40px;
+}
+
+.new-post-header {
+  h1 {
+    margin: 10px 20px;
+  }
+}
+
+.new-post {
+  .form-item {
+    margin: 5px 20px;
+    width: 95%;
+    border-radius: 10px;
+  }
+
+  .content {
+    height: 300px;
+    font-size: 30px;
+  }
+
+  button {
+    float: right;
+    @include large-button(#007aff, 13px, #fff);
+  }
+
+  button:hover {
+    @include item-hover(#007aff);
+  }
+}

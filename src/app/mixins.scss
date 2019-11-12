@@ -1,0 +1,36 @@
+@mixin small-button($background-color, $font-size, $color) {
+    font-size: $font-size;
+    cursor: pointer;
+    background-color: $background-color;
+    color: $color;
+    padding: 10px 15px;
+    border: none;
+    position: fixed;
+    display: none;
+    top: 10px;
+    left: 5px;
+    z-index: 99;
+    border-radius: 10px;
+}
+
+@mixin large-button($background-color, $font-size, $color) {
+    padding: 0 25px;
+    font-size: $font-size;
+    margin: 5px 20px;
+    border-radius: 100px;
+    background-color: $background-color;
+    color: $color;
+    line-height: 50px;
+    border: none;
+    font-weight: bold;
+    word-spacing: normal;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+@mixin item-hover($background-color) {
+    background: darken($background-color, 50%);
+    box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    left: .1em;
+    cursor: pointer;
+}

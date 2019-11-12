@@ -13,7 +13,7 @@ import { CommandInvoker } from '../command-invoker';
 @Component({
   selector: 'app-post-detail',
   templateUrl: './post-detail.component.html',
-  styleUrls: ['./post-detail.component.css']
+  styleUrls: ['./post-detail.component.scss']
 })
 export class PostDetailComponent implements OnInit {
   comments: Comment[];
