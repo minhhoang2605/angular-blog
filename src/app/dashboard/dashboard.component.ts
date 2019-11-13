@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,21 +6,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  viewportWidth: any;
+  showNavBar: boolean = false;
 
   constructor() { }
 
   ngOnInit() {
+    this.viewportWidth = window.innerWidth;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.viewportWidth = window.innerWidth;
+    if (this.viewportWidth > 700) {
+      this.showNavBar = false;
+    }
   }
 
   toggleNav() {
-    if (document.getElementById('sidenav').style.width !== '0px') {
-      document.getElementById('sidenav').style.width = '0px';
-      document.getElementById('main').style.marginLeft = '0px';
-      document.getElementById('myButton').innerHTML = '☰';
+    if (this.showNavBar == true) {
+      this.showNavBar = false;
     } else {
-      document.getElementById('sidenav').style.width = '240px';
-      document.getElementById('main').style.marginLeft = '240px';
-      document.getElementById('myButton').innerHTML = 'X';
+      this.showNavBar = true;
     }
+    console.log("Set to " + this.showNavBar);
   }
 }
