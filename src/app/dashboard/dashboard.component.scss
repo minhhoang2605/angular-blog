@@ -34,8 +34,11 @@
 }
 
 .openbtn {
-  display: none;
   @include small-button(rgba(17, 17, 17, 0.503), 10px, white);
+  position: fixed;
+  display: none;
+  top: 10px;
+  left: 5px;
 }
 
 @media (max-width: 700px) {
@@ -48,11 +51,11 @@
   .openbtn {
     display: block;
   }
+
   .show-navbar {
     .sidenav {
       display: block;
     }
-
     .main {
       margin-left: 240px;
     }

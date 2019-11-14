@@ -1,0 +1,16 @@
+<header class='update-post-header'>
+    <h1>Update Post</h1>
+</header>
+<main class='update-post'>
+    <form #updatePostForm = "ngForm" (ngSubmit)="onSubmit()">
+        <textarea class='form-item title' id='form-item-title' type="text" name = "title"
+            placeholder="Type your post title here">{{post.title}}</textarea>
+        <br>
+        <textarea class='form-item content' id='form-item-content' type="text" name = "content"
+            placeholder="Type your post here">{{post.content}}</textarea>
+        <br>
+        <button type='submit' class="submit">
+            UPDATE POST
+        </button>
+    </form>
+</main>

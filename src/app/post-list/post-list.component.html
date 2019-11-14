@@ -1,13 +1,24 @@
 <div class="posts-container">
         <h1>Popular Posts</h1>
-    <div class="post-container" *ngFor='let post of posts' routerLink="/dashboard/post/{{post.id}}">
-        <div class="post-left-side">
+    <div class="post-container" *ngFor='let post of posts' >
+        <div class="post-left-side" routerLink="/dashboard/post/{{post.id}}">
             <img class="post-thumbnail " width="660" height="420" src="../../assets/laptop.jpeg" alt>
         </div>
-        <div class="post-right-side">
-            <h2> {{ post.title }}</h2>
+        <div class="post-right-side" routerLink="/dashboard/post/{{post.id}}">
+            <h2> {{ post.title }} 
+                
+            </h2>
             <div class="post-date"> September 30, 2019 </div>
             <div class="post-comments"> 1 <i class="fa fa-comment"></i> </div>
         </div>
+        <span class="post-menu">
+                <button class="dropdown-button">
+                    <fa-icon [icon]="['fas', 'chevron-circle-down']"></fa-icon>
+                </button>
+                <div class="dropdown-contents">
+                    <div class="item" (click)="deletePost(post.id)">delete</div>
+                    <div class="item" routerLink="/dashboard/post/update/{{ post.id }}"> update </div>
+                </div>
+            </span>
     </div>
 </div>

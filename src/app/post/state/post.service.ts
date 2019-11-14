@@ -40,13 +40,27 @@ export class PostService {
     }
   }
 
+  private async updatePost(id: ID, post: Partial<Post>) {
+    try {
+      return this.graphqlService.query(updatePost, {
+        input: {
+          id: id,
+          title: post.title,
+          content: post.content
+        }
+      });
+    } catch (error) {
+      return Promise.reject(Error('Failed to remove post'));
+    }
+  }a
+
   async add(post: Post) {
     await this.addPost(post);
     this.postStore.add(post);
   }
 
-  update(id, post: Partial<Post>) {
-    //TODO
+  async update(id, post: Partial<Post>) {
+    this.updatePost(id, post);
     this.postStore.update(id, post);
   }
 

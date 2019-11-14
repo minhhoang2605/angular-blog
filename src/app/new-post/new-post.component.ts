@@ -15,7 +15,7 @@ export class NewPostComponent implements OnInit {
 
   constructor(
     private postService: PostService,
-    private router: Router,
+    private router: Router
     ) { }
 
   ngOnInit() {
@@ -26,8 +26,6 @@ export class NewPostComponent implements OnInit {
     if (this.post.title == null || this.post.content == null) {
       alert('Invalid Input');
     } else {
-      //this.postService.add(this.post);
-      
       const invoker = new CommandInvoker();
       invoker.setCommand(new AddPost(this.postService, this.post));
       invoker.doThing();

@@ -3,12 +3,8 @@
     cursor: pointer;
     background-color: $background-color;
     color: $color;
-    padding: 10px 15px;
+    padding: 5px 10px;
     border: none;
-    position: fixed;
-    display: none;
-    top: 10px;
-    left: 5px;
     z-index: 99;
     border-radius: 10px;
 }
