@@ -43,7 +43,6 @@ export class CommentService {
 
   async add(comment: Comment) {
     await this.addComment(comment);
-    this.commentStore.add(comment);
   }
 
   // async update(id, comment: Partial<Comment>) {
