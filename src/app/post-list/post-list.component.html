@@ -16,8 +16,8 @@
                     <fa-icon [icon]="['fas', 'chevron-circle-down']"></fa-icon>
                 </button>
                 <div class="dropdown-contents">
+                    <div class="item" routerLink="/dashboard/post/update/{{ post.id }}"> edit </div>
                     <div class="item" (click)="deletePost(post.id)">delete</div>
-                    <div class="item" routerLink="/dashboard/post/update/{{ post.id }}"> update </div>
                 </div>
             </span>
     </div>

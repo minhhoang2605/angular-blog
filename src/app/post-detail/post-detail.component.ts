@@ -50,8 +50,6 @@ export class PostDetailComponent implements OnInit {
       id: '0',
       content: commentText
     };
-    // await this.commentService.add(comment);
-
     const invoker = new CommandInvoker();
     invoker.setCommand(new AddComment(this.commentService, comment));
     invoker.doThing();

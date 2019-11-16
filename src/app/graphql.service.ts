@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { API, graphqlOperation } from 'aws-amplify';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +15,17 @@ export class GraphqlService {
     } catch (error) {
       return Promise.reject(Error('Failed to send query'));
     }
+  }
+
+  getSubscription(subscription: string, params?: any): Observable<any> {
+    const observable = new Subject();
+    API.graphql(graphqlOperation(subscription, params))
+        .subscribe((response: any) => {
+      observable.next(response);
+    }, error => {
+      const newError = Error("GraphQLService failed to subscribe");
+      observable.error(newError);
+    });
+    return observable;
   }
 }

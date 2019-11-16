@@ -52,20 +52,20 @@ export class PostService {
     } catch (error) {
       return Promise.reject(Error('Failed to remove post'));
     }
-  }a
+  }
 
   async add(post: Post) {
     await this.addPost(post);
-    this.postStore.add(post);
+    // this.postStore.add(post);
   }
 
   async update(id, post: Partial<Post>) {
     this.updatePost(id, post);
-    this.postStore.update(id, post);
+    // this.postStore.update(id, post);
   }
 
   async remove(id: ID) {
     await this.removePost(id);
-    this.postStore.remove(id);
+    // this.postStore.remove(id);
   }
 }

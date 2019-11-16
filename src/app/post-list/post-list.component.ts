@@ -36,7 +36,6 @@ export class PostListComponent implements OnInit {
     const invoker = new CommandInvoker();
     invoker.setCommand(new RemovePost(this.postService, id));
     invoker.doThing();
-    // this.postService.remove(id);
     invoker.setCommand(new RemovePost(this.postService, id));
     invoker.doThing();
     this.commentService.removeComments(id);
