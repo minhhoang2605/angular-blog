@@ -3,12 +3,10 @@
 </header>
 <main class='new-post'>
     <form #newPostForm = "ngForm" (ngSubmit)="onSubmit()">
-        <textarea class='form-item title' type="text" name = "title" required
-            [(ngModel)]="post.title"
+        <textarea class='form-item title' id='form-item-title' type="text" name = "title" required
             placeholder="Type your post title here"></textarea>
         <br>
-        <textarea class='form-item content' type="text" name = "content" required
-            [(ngModel)]="post.content"
+        <textarea class='form-item content' id='form-item-content' type="text" name = "content" required
             placeholder="Type your post here"></textarea>
         <br>
         <button type='submit' class="submit">
