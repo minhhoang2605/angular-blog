@@ -34,12 +34,12 @@ export default class Utils {
         }
     }
 
-    static getPostFromInputFields(doc: Document, titleId: string, 
-            contentId: string): Post {
-        const postTitle = Utils.getElementValue(doc, titleId);
-        const postContent = Utils.getElementValue(doc, contentId);
+    // static getPostFromInputFields(doc: Document, titleId: string, 
+    //         contentId: string): Post {
+    //     const postTitle = Utils.getElementValue(doc, titleId);
+    //     const postContent = Utils.getElementValue(doc, contentId);
 
-        let post = new Post(postTitle, postContent);
-        return post;
-    }
+    //     let post = new Post(postTitle, postContent);
+    //     return post;
+    // }
 }
