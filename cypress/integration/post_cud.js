@@ -48,6 +48,14 @@ context('Post Create Update Delete', () => {
     cy.contains('test cypress content edited')
   })
 
+  it("Post a commnet", function () {
+    cy.contains('test cypress title edited').click()
+
+    cy.get('.comment-input').type('test cypress comment{enter}')
+
+    cy.get('.comments').contains('test cypress comment')
+  })
+
   it("Delete a Post", function () {
     cy.contains('test cypress title edited')
       .parent()
