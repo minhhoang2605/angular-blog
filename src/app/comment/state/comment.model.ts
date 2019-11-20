@@ -4,6 +4,11 @@ export class Comment {
   id: ID;
   postID: ID;
   content: string;
+
+  constructor(postId: ID, content?: string) {
+    this.postID = postId;
+    this.content = content || "";
+}
 }
 
 /**

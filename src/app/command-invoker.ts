@@ -1,3 +1,5 @@
+import { Command } from 'src/app/command';
+
 export class CommandInvoker {
     private command: Command;
 

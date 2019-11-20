@@ -1,6 +1,6 @@
 import { PostService } from '../state/post.service';
-import { Post } from 'src/app/post/state/post.model';
 import { ID } from '@datorama/akita';
+import { Command } from 'src/app/command';
 
 export class RemovePost implements Command {
     private postService: PostService;

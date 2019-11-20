@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { ID } from '@datorama/akita';
 import { RemovePost } from '../post/commands/remove-post';
 import { CommandInvoker } from '../command-invoker';
+import { RemoveComments } from '../comment/commands/remove-comments';
 
 @Component({
   selector: 'app-post-list',
@@ -34,10 +35,9 @@ export class PostListComponent implements OnInit {
 
   deletePost(id: ID) {
     const invoker = new CommandInvoker();
-    invoker.setCommand(new RemovePost(this.postService, id));
+    invoker.setCommand(new RemoveComments(this.commentService, id));
     invoker.doThing();
     invoker.setCommand(new RemovePost(this.postService, id));
     invoker.doThing();
-    this.commentService.removeComments(id);
   }
 }

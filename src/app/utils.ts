@@ -28,18 +28,10 @@ export default class Utils {
     
     static redirectTo(router: Router, link: string, id: ID = null) {
         if (id !== null) {
-            router.navigate([`${link}${id}`]);
+            router.navigate([`${link}/${id}`]);
         } else {
             router.navigate([`${link}`]);
         }
     }
 
-    // static getPostFromInputFields(doc: Document, titleId: string, 
-    //         contentId: string): Post {
-    //     const postTitle = Utils.getElementValue(doc, titleId);
-    //     const postContent = Utils.getElementValue(doc, contentId);
-
-    //     let post = new Post(postTitle, postContent);
-    //     return post;
-    // }
 }
